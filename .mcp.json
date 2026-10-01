@@ -2,7 +2,7 @@
   "mcpServers": {
     "easypdf": {
       "type": "http",
-      "url": "https://www.easypdf.fr/mcp"
+      "url": "https://www.easypdf.fr/mcp/"
     }
   }
 }

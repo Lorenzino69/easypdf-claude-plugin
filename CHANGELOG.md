@@ -4,7 +4,7 @@
 
 First release.
 
-- Hosted EasyPDF MCP server (`https://www.easypdf.fr/mcp`), 17 tools.
+- Hosted EasyPDF MCP server (`https://www.easypdf.fr/mcp/`), 17 tools. The trailing slash matters: Claude Code rejects the OAuth resource without it.
 - Skills: `easypdf`, `fix-pdf-text`, `compress-for-portal`,
   `application-packet`, `translate-pdf`, `pdf-to-office`, `batch-pdf`,
   `protect-and-share`.
