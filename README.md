@@ -105,6 +105,20 @@ local file --upload--> EasyPDF (https://www.easypdf.fr/mcp) --link--> next tool 
 - `edit_pdf_text` runs no AI on EasyPDF's side: Claude decides the changes,
   EasyPDF writes them.
 
+## Where your data goes
+
+Everything goes to EasyPDF, and nowhere else. The skills reach three
+addresses, all operated by EasyPDF over HTTPS:
+
+| Address | What is sent or fetched | When |
+| --- | --- | --- |
+| `https://www.easypdf.fr/mcp` | Tool calls: file links and operation parameters | Every operation (the connector declared in `.mcp.json`) |
+| `https://www.easypdf.fr/api/ai-uploads/<token>` | The local PDF you asked Claude to process | Only when Claude can run commands and the file is on your disk |
+| `https://easy-pdf-backend.up.railway.app/api/chatgpt/download/...` | The result file, downloaded with `curl` | After each operation, to save the result next to the original |
+
+The upload link is single-use for one file, signed, and expires after one
+hour; so do the result links. No other service is contacted by the plugin.
+
 ## Privacy and data
 
 See [PRIVACY.md](PRIVACY.md) and the full policy at
