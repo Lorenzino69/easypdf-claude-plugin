@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="assets/icon.png" width="96" height="96" alt="EasyPDF">
-</p>
+![EasyPDF](assets/icon.png)
 
 <h1 align="center">EasyPDF for Claude</h1>
 
