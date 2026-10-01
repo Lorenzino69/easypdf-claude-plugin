@@ -1,0 +1,27 @@
+{
+  "name": "easypdf",
+  "displayName": "EasyPDF",
+  "version": "1.0.0",
+  "description": "Work on real PDF files from Claude: edit text in place with the original fonts, compress under a portal's size limit, build application packets, translate with the layout kept, convert to Word, Excel or PowerPoint. In Claude Code, local files are processed end to end and the result lands next to the original.",
+  "author": {
+    "name": "LORENET SYSTEMS",
+    "email": "hello@easypdf.fr",
+    "url": "https://www.easypdf.fr"
+  },
+  "homepage": "https://www.easypdf.fr/mcp-docs",
+  "repository": "https://github.com/Lorenzino69/easypdf-claude-plugin",
+  "license": "MIT",
+  "icon": "./assets/icon.png",
+  "privacyPolicyUrl": "https://www.easypdf.fr/confidentialite",
+  "termsOfServiceUrl": "https://www.easypdf.fr/conditions",
+  "keywords": [
+    "pdf",
+    "compress",
+    "edit-pdf",
+    "merge",
+    "translate",
+    "pdf-to-word",
+    "pdf-editor",
+    "documents"
+  ]
+}

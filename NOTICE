@@ -1,0 +1,16 @@
+EasyPDF for Claude
+Copyright (c) 2026 LORENET SYSTEMS
+
+This plugin is licensed under the MIT License (see LICENSE), except for the
+third-party material listed below.
+
+skills/compress-for-portal/references/portal-upload-limits.csv
+  Source: pdf-upload-caps, https://github.com/Lorenzino69/pdf-upload-caps
+  File: data/all-portals.csv
+  License: Creative Commons Attribution 4.0 International (CC BY 4.0),
+  https://creativecommons.org/licenses/by/4.0/
+  Copied unmodified.
+
+The EasyPDF service reached at https://www.easypdf.fr/mcp is not part of this
+repository. It is a proprietary hosted service governed by its terms of use:
+https://www.easypdf.fr/conditions

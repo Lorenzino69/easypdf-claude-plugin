@@ -1,0 +1,45 @@
+name: Validate plugin
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Validate plugin manifest
+        run: claude plugin validate .claude-plugin/plugin.json --strict
+
+      - name: Validate marketplace manifest
+        run: claude plugin validate .
+
+      - name: Check JSON files
+        run: |
+          for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json .mcp.json; do
+            node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" && echo "ok $f"
+          done
+
+      - name: Check skill front matter
+        run: |
+          status=0
+          for f in skills/*/SKILL.md; do
+            dir=$(basename "$(dirname "$f")")
+            head -1 "$f" | grep -qx -- '---' || { echo "::error file=$f::missing front matter"; status=1; }
+            grep -qx "name: $dir" "$f" || { echo "::error file=$f::name must be $dir"; status=1; }
+            grep -q '^description: ' "$f" || { echo "::error file=$f::missing description"; status=1; }
+          done
+          exit $status
