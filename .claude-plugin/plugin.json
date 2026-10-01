@@ -8,7 +8,9 @@
     "email": "hello@easypdf.fr",
     "url": "https://www.easypdf.fr"
   },
-  "homepage": "https://www.easypdf.fr/mcp-docs",
+  "homepage": "https://www.easypdf.fr",
+  "documentationUrl": "https://www.easypdf.fr/mcp-docs",
+  "supportUrl": "https://github.com/Lorenzino69/easypdf-claude-plugin/issues",
   "repository": "https://github.com/Lorenzino69/easypdf-claude-plugin",
   "license": "MIT",
   "icon": "./assets/icon.png",
