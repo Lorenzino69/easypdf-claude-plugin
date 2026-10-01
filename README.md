@@ -116,8 +116,8 @@ addresses, all operated by EasyPDF over HTTPS:
 | `https://www.easypdf.fr/api/ai-uploads/<token>` | The local PDF you asked Claude to process | Only when Claude can run commands and the file is on your disk |
 | `https://easy-pdf-backend.up.railway.app/api/chatgpt/download/...` | The result file, downloaded with `curl` | After each operation, to save the result next to the original |
 
-The upload link is single-use for one file, signed, and expires after one
-hour; so do the result links. No other service is contacted by the plugin.
+The upload link is signed, holds one file and expires after one hour, like
+the result links. No other service is contacted by the plugin.
 
 ## Privacy and data
 
