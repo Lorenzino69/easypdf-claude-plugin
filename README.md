@@ -71,13 +71,16 @@ claude plugin marketplace add Lorenzino69/easypdf-claude-plugin
 claude plugin install easypdf@easypdf
 ```
 
-The first time a tool runs, Claude Code asks you to sign in to EasyPDF with
-Google (run `/mcp` if the prompt does not appear). That is the only setup:
-there is no API key and nothing to run locally.
+It works right away, without an account, for a few files a day. For more, or
+for translation and Office conversions, run `/mcp`, select
+`plugin:easypdf:easypdf`, choose **Authenticate** and sign in with Google.
+There is no API key and nothing to run locally.
 
 ### Claude Cowork
 
-Install **EasyPDF** from the plugin directory, then connect when prompted.
+Install **EasyPDF** from the plugin directory. A few files a day work without
+an account; connect EasyPDF under Customize > Plugins > EasyPDF > Connectors
+for more.
 
 ### Only want the tools?
 
@@ -88,9 +91,11 @@ https://claude.ai/directory/easypdf
 
 - `curl` on the machine, to upload local files and download results. It
   ships with macOS, Linux and Windows 10 or later.
-- An EasyPDF account, created on first sign-in. Every processed file counts
-  toward your plan, the same counter as on [easypdf.fr](https://www.easypdf.fr):
-  the free plan includes a small daily allowance, paid plans are unlimited.
+- Nothing for a first try in Claude Code or Cowork: a few files a day work
+  without an account. Beyond that, an EasyPDF account, created on first
+  sign-in. Every processed file counts toward your plan, the same counter as
+  on [easypdf.fr](https://www.easypdf.fr): the free plan includes a small daily
+  allowance, paid plans are unlimited.
 
 ## How it works
 

@@ -9,6 +9,10 @@
 - `easypdf` skill: when the code sandbox cannot reach easypdf.fr (the
   default on Claude.ai), Claude switches to the upload link at once instead
   of retrying.
+- `easypdf` skill: Claude Code and Cowork can use EasyPDF without an account
+  for a few files a day; the skill says which tools need one.
+- `easypdf` skill: on Claude.ai, the user drops the PDF in the upload box
+  shown in the chat instead of opening a separate page.
 - `compress-for-portal` and `application-packet`: compress straight to the
   portal's limit with the new `target_size_mb` option of `compress_pdf`,
   keeping the best quality that fits.

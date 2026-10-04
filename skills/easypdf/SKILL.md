@@ -17,10 +17,15 @@ PowerPoint conversions.
 
 ## 0. Make sure EasyPDF is connected
 
-Installing the plugin does not sign the user in. If no EasyPDF tool
-(`compress_pdf`, `get_upload_link`...) is available to you, or a call fails
-with an authentication or sign-in error, the account is not connected yet.
-Tell the user in two sentences how to connect, where they are, then wait:
+In Claude Code and Cowork, EasyPDF works without an account for a few files
+a day (compress, merge, split, pages, protect, watermark, numbers, text
+edits). Translation, chat and Office conversions, and anything past the daily
+trial, need a free EasyPDF account. On Claude.ai the account is always needed.
+
+If no EasyPDF tool (`compress_pdf`, `get_upload_link`...) is available to you,
+or a tool answers that it needs an account, or a call fails with an
+authentication or sign-in error, tell the user in two sentences how to
+connect, where they are, then wait:
 
 - **Claude Code** (terminal, desktop app, IDE): run `/mcp`, select
   `plugin:easypdf:easypdf`, choose **Authenticate** and sign in with Google.
@@ -45,8 +50,8 @@ upload it yourself, the user has nothing to do.
 
 1. Call `get_upload_link` with `file_name` set to the file's name. It returns an
    `upload_url` such as `https://www.easypdf.fr/ai-upload/<token>`.
-2. Upload the file to the matching API endpoint, `/api/ai-uploads/<token>`
-   (same token, `api/ai-uploads` instead of `ai-upload`):
+2. Upload the file to the `api_url` it also returns (the same token under
+   `/api/ai-uploads/`):
 
    ```bash
    curl -fsS -F "file=@<path/to/file.pdf>;type=application/pdf" "https://www.easypdf.fr/api/ai-uploads/<token>"
@@ -64,9 +69,11 @@ not ask the user to change settings: switch to the next case and give them
 the link.
 
 **The PDF is local but you cannot run commands** (claude.ai chat): call
-`get_upload_link`, show the link, ask the user to open it and drop the PDF,
-wait until they confirm, then pass that link as `file_url`. Files attached to
-the chat are not reachable by EasyPDF.
+`get_upload_link`. Claude.ai shows an EasyPDF upload box under the call: ask
+the user to drop the PDF in it. The box tells you when the file is uploaded,
+then pass the `upload_url` as `file_url`. Where no box appears, show the link,
+ask the user to open it and drop the PDF, and wait until they confirm. Files
+attached to the chat are not reachable by EasyPDF.
 
 Limits: 50 MB per file, 20 uploads per minute.
 
