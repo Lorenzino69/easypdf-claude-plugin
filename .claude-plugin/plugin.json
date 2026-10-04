@@ -1,7 +1,7 @@
 {
   "name": "easypdf",
   "displayName": "EasyPDF",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Work on real PDF files from Claude: edit text in place with the original fonts, compress under a portal's size limit, build application packets, translate with the layout kept, convert to Word, Excel or PowerPoint. In Claude Code, local files are processed end to end and the result lands next to the original.",
   "author": {
     "name": "LORENET SYSTEMS",

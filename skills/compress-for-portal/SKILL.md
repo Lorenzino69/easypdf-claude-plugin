@@ -31,14 +31,21 @@ assumed. Use the `easypdf` skill for getting the file in and out.
 Measure the current size on disk. If the file already fits, say so and stop:
 no call, no quota used.
 
-## 3. Compress once, then check
+## 3. Compress once to the limit, then check
 
-Run `compress_pdf`, save the result as `<name>-compressed.pdf`, measure it.
+Run `compress_pdf` with `target_size_mb` set to the limit minus about 5 %
+(1.9 for a 2 MB limit, 4.75 for 5 MB): EasyPDF then compresses only as much
+as needed and keeps the best quality that fits, instead of crushing the file
+far below the limit. Convert KiB from the CSV with `cap_kb / 1024`. Save the
+result as `<name>-compressed.pdf` and measure it.
 
-- **Fits**: report `before -> after (limit X, source)` and where it is saved.
-- **Still too big**: do not loop on `compress_pdf`, a second pass gains
-  little and each call counts against the user's plan. Offer the options that
-  actually work, in this order:
+If the tool rejects `target_size_mb` (older server), call it once without it.
+
+- **Fits** (`target_reached: true`, size on disk under the limit): report
+  `before -> after (limit X, source)` and where it is saved.
+- **Still too big** (`target_reached: false`): do not loop on `compress_pdf`,
+  it already tried every level and each call counts against the user's plan.
+  Offer the options that actually work, in this order:
   1. Remove pages the portal does not need (`extract_pages`), e.g. blank
      pages, duplicate scans, appendices.
   2. Split into several files if the portal accepts several uploads

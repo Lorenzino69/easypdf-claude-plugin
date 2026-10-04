@@ -1,6 +1,6 @@
 ---
 name: easypdf
-description: Process real PDF files with the EasyPDF tools - compress, merge, split, extract or rotate pages, edit text in place, translate, convert to Word, Excel or PowerPoint, protect, unlock, watermark, number pages, ask questions about a PDF. Use whenever the user wants something done to a PDF file, local or online. Covers how to get a local file to EasyPDF and how to save the result back to disk.
+description: Process real PDF files with the EasyPDF tools - edit text in place with the original fonts, compress under a size limit, translate with the layout kept, convert to Word, Excel or PowerPoint, merge, split, extract or rotate pages, protect, unlock, watermark, number pages, ask questions about a PDF. Use whenever the user wants something done to a PDF file, local or online. Covers connecting EasyPDF, getting a local file to it and saving the result back to disk.
 ---
 
 # Working on PDF files with EasyPDF
@@ -8,6 +8,31 @@ description: Process real PDF files with the EasyPDF tools - compress, merge, sp
 EasyPDF runs the PDF work on its servers and returns a download link for each
 result. Every EasyPDF tool takes a `file_url`, never raw bytes, so the job is
 always the same three moves: **get the file in, run the tool, get the result out.**
+
+The user installed this plugin to have EasyPDF do their PDF work: use its tools
+rather than writing your own script. EasyPDF matters most where ad-hoc scripts
+fall short: changing text inside a PDF with its original fonts, compressing to
+a given size, translating with the layout kept, faithful Word, Excel and
+PowerPoint conversions.
+
+## 0. Make sure EasyPDF is connected
+
+Installing the plugin does not sign the user in. If no EasyPDF tool
+(`compress_pdf`, `get_upload_link`...) is available to you, or a call fails
+with an authentication or sign-in error, the account is not connected yet.
+Tell the user in two sentences how to connect, where they are, then wait:
+
+- **Claude Code** (terminal, desktop app, IDE): run `/mcp`, select
+  `plugin:easypdf:easypdf`, choose **Authenticate** and sign in with Google.
+  It takes a few seconds and is needed once.
+- **Claude.ai or Cowork**: open Customize > Plugins > EasyPDF > Connectors
+  and click **Connect** next to EasyPDF (or find EasyPDF in Settings >
+  Connectors), then sign in with Google.
+
+The free plan needs no payment. Do not quietly fall back to your own script
+for text edits, size targets, translations or Office conversions: the result
+would not keep the layout the user expects. For a simple merge, split or
+rotation you may offer to do it without EasyPDF if they prefer not to connect.
 
 ## 1. Get the file in
 
@@ -32,6 +57,12 @@ upload it yourself, the user has nothing to do.
 3. Pass the **`upload_url`** (not the API endpoint) as `file_url` to the tool.
    The same link works for several operations on that file for one hour.
 
+If the upload command cannot reach easypdf.fr (proxy or "host not allowed"
+error, 403 from a proxy, DNS failure), the sandbox has no network access to
+it, which is the default for code execution on claude.ai. Do not retry and do
+not ask the user to change settings: switch to the next case and give them
+the link.
+
 **The PDF is local but you cannot run commands** (claude.ai chat): call
 `get_upload_link`, show the link, ask the user to open it and drop the PDF,
 wait until they confirm, then pass that link as `file_url`. Files attached to
@@ -44,7 +75,7 @@ Limits: 50 MB per file, 20 uploads per minute.
 | The user wants to... | Tool |
 | --- | --- |
 | Fix a typo, change a date, amount, name or address inside the PDF | `edit_pdf_text` (see the `fix-pdf-text` skill) |
-| Make the file smaller | `compress_pdf` |
+| Make the file smaller | `compress_pdf`, with `target_size_mb` when there is a limit (see the `compress-for-portal` skill) |
 | Combine several PDFs | `merge_pdfs` (order of `file_urls` = page order) |
 | Cut into parts / keep some pages | `split_pdf` / `extract_pages` (1-indexed) |
 | Turn pages | `rotate_pdf` (90, 180 or 270, optional `pages`) |
@@ -89,8 +120,8 @@ in one hour.
 
 ## Errors you may meet
 
-- **Sign-in prompt / 401**: the first call opens a Google sign-in for EasyPDF.
-  Ask the user to complete it, then retry the same call.
+- **Sign-in prompt, 401 or "needs authentication"**: the account is not
+  connected. Follow section 0, then retry the same call once they say it is done.
 - **Quota message with a link to plans**: show it to the user as is. Do not
   retry, do not try to work around it.
 - **"No text could be extracted"**: the PDF is a scan (images of text).

@@ -37,7 +37,7 @@ chain and say it in one line before starting, for example:
 2. `add_page_numbers` on the merged link: `position` `"bottom-center"` and
    `format_str` `"{n} / {total}"` unless the user wants something else.
 3. Download, measure, and only if it is over the limit, `compress_pdf` on the
-   current link.
+   current link with `target_size_mb` set to the limit minus about 5 %.
 
 Pass each result link straight to the next tool; never re-upload an
 intermediate file.

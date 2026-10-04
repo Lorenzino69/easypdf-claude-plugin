@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.0 - 2026-10-04
+
+- `easypdf` skill: new first step when EasyPDF is installed but not
+  connected. Claude now tells the user how to connect (`/mcp` in Claude
+  Code, Customize > Plugins > EasyPDF > Connectors on Claude.ai and Cowork)
+  instead of silently doing the work another way.
+- `easypdf` skill: when the code sandbox cannot reach easypdf.fr (the
+  default on Claude.ai), Claude switches to the upload link at once instead
+  of retrying.
+- `compress-for-portal` and `application-packet`: compress straight to the
+  portal's limit with the new `target_size_mb` option of `compress_pdf`,
+  keeping the best quality that fits.
+
 ## 1.0.0 - 2026-10-01
 
 First release.
