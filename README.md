@@ -79,8 +79,8 @@ There is no API key and nothing to run locally.
 ### Claude Cowork
 
 Install **EasyPDF** from the plugin directory. A few files a day work without
-an account; connect EasyPDF under Customize > Plugins > EasyPDF > Connectors
-for more.
+an account; for more, connect EasyPDF in the plugin's
+[Connectors tab](https://claude.ai/customize/plugins/id/8c9a384a-9a5d-4f58-b341-aa1c7d74638b%40anthropic-plugin-directory/connectors).
 
 ### Only want the tools?
 

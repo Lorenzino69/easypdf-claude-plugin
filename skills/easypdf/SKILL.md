@@ -22,22 +22,45 @@ a day (compress, merge, split, pages, protect, watermark, numbers, text
 edits). Translation, chat and Office conversions, and anything past the daily
 trial, need a free EasyPDF account. On Claude.ai the account is always needed.
 
+In Claude Code and Cowork, try the tool first: do not ask the user to connect
+before a tool has actually asked for it.
+
 If no EasyPDF tool (`compress_pdf`, `get_upload_link`...) is available to you,
 or a tool answers that it needs an account, or a call fails with an
-authentication or sign-in error, tell the user in two sentences how to
-connect, where they are, then wait:
+authentication or sign-in error, reply with these two options, in the user's
+language, then stop and wait:
 
-- **Claude Code** (terminal, desktop app, IDE): run `/mcp`, select
-  `plugin:easypdf:easypdf`, choose **Authenticate** and sign in with Google.
-  It takes a few seconds and is needed once.
-- **Claude.ai or Cowork**: open Customize > Plugins > EasyPDF > Connectors
-  and click **Connect** next to EasyPDF (or find EasyPDF in Settings >
-  Connectors), then sign in with Google.
+1. **Connect EasyPDF once** (free, Google sign-in, about ten seconds), then ask
+   again:
+   - **Claude.ai or Cowork**: give this link as a clickable link, it opens the
+     plugin's Connectors tab where they click **Connect**:
+     https://claude.ai/customize/plugins/id/8c9a384a-9a5d-4f58-b341-aa1c7d74638b%40anthropic-plugin-directory/connectors
+   - **Claude Code** (terminal, desktop app, IDE): run `/mcp`, select
+     `plugin:easypdf:easypdf`, choose **Authenticate**.
+2. **Or do it right now in the browser, nothing to connect**: give the
+   matching EasyPDF page from the table below as a clickable link.
 
-The free plan needs no payment. Do not quietly fall back to your own script
-for text edits, size targets, translations or Office conversions: the result
-would not keep the layout the user expects. For a simple merge, split or
-rotation you may offer to do it without EasyPDF if they prefer not to connect.
+| Task | Page |
+| --- | --- |
+| Edit text | https://www.easypdf.fr/tools/edit |
+| Compress | https://www.easypdf.fr/tools/compress |
+| Merge | https://www.easypdf.fr/tools/merge |
+| Split / extract pages | https://www.easypdf.fr/tools/split |
+| Rotate | https://www.easypdf.fr/tools/rotate |
+| Page numbers | https://www.easypdf.fr/tools/page-numbers |
+| Watermark | https://www.easypdf.fr/tools/watermark |
+| Password / unlock | https://www.easypdf.fr/tools/protect, https://www.easypdf.fr/tools/unlock |
+| Translate | https://www.easypdf.fr/tools/translate |
+| To Word / Excel / PowerPoint | https://www.easypdf.fr/tools/convert/pdf-to-word, https://www.easypdf.fr/tools/convert/pdf-to-excel, https://www.easypdf.fr/tools/convert/pdf-to-ppt |
+| Fill and sign a form | https://www.easypdf.fr/tools/fill-sign |
+| Anything else | https://www.easypdf.fr |
+
+Keep it to those two options and a one-line intro; no account pitch, no
+pricing. The free plan needs no payment. Do not quietly fall back to your own
+script for text edits, size targets, translations or Office conversions: the
+result would not keep the layout the user expects. For a simple merge, split
+or rotation you may offer to do it without EasyPDF if they prefer not to
+connect.
 
 ## 1. Get the file in
 

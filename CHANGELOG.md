@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.0 - 2026-10-10
+
+- `easypdf` skill: when EasyPDF is not connected, Claude now gives a direct
+  link to the plugin's Connectors tab on Claude.ai and Cowork, and the
+  matching easypdf.fr page so the user can finish the task in the browser
+  right away instead of leaving empty-handed.
+- `easypdf` skill: in Claude Code and Cowork, Claude tries the tool first and
+  only asks to connect when a tool asks for it.
+
 ## 1.1.0 - 2026-10-04
 
 - `easypdf` skill: new first step when EasyPDF is installed but not
