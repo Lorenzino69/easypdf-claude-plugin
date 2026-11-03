@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.3.0 - 2026-11-03
+
+- Grok Bot and Cursor: new `.cursor-plugin/` manifest, MCP file and
+  marketplace file, plus a 512x512 logo on a white plate
+  (`assets/logo-plate.png`). The plugin installs from this repository in
+  Cursor (Settings > Plugins) and is ready for the Grok Bot and Cursor
+  marketplace.
+- Grok Build: `.grok-plugin/plugin.json`, using the same `.mcp.json`.
+- Agent Plugins: `mcp.json` at the root, so clients that read the root
+  `plugin.json` also find the EasyPDF server.
+- `easypdf` skill: how to connect in Grok Bot and Cursor; files attached in a
+  Grok Bot chat are uploaded from the Bot's computer, results are attached to
+  the reply, scheduled routines stop on a quota message.
+- `batch-pdf` and `fix-pdf-text`: name Cursor and Grok Bot among the hosts
+  that can read local files.
+
 ## 1.2.0 - 2026-10-10
 
 - `easypdf` skill: when EasyPDF is not connected, Claude now gives a direct

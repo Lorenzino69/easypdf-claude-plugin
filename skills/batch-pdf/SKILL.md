@@ -5,8 +5,8 @@ description: Apply the same PDF operation to many files at once - compress every
 
 # Process many PDFs in one go
 
-Requires shell access (Claude Code, Cowork). Use the `easypdf` skill for the
-upload and download steps of each file.
+Requires shell access (Claude Code, Cowork, Cursor, a Grok Bot computer). Use
+the `easypdf` skill for the upload and download steps of each file.
 
 ## Before starting
 

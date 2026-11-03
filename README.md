@@ -1,10 +1,10 @@
 ![EasyPDF](assets/icon.png)
 
-<h1 align="center">EasyPDF for Claude</h1>
+<h1 align="center">EasyPDF for Claude, Grok Bot and Cursor</h1>
 
 <p align="center">
-  <b>Ask Claude to fix, shrink, merge or translate a PDF. Get the finished file back on your disk.</b><br>
-  A plugin for Claude Code and Claude Cowork, built on the hosted <a href="https://claude.ai/directory/easypdf">EasyPDF connector</a>.
+  <b>Ask your assistant to fix, shrink, merge or translate a PDF. Get the finished file back.</b><br>
+  A plugin for Claude Code, Claude Cowork, Grok Bot and Cursor, built on EasyPDF's hosted MCP server (the <a href="https://claude.ai/directory/easypdf">EasyPDF connector</a> on Claude).
 </p>
 
 <p align="center">
@@ -82,6 +82,27 @@ Install **EasyPDF** from the plugin directory. A few files a day work without
 an account; for more, connect EasyPDF in the plugin's
 [Connectors tab](https://claude.ai/customize/plugins/id/8c9a384a-9a5d-4f58-b341-aa1c7d74638b%40anthropic-plugin-directory/connectors).
 
+### Grok Bot
+
+Type `/add-plugin easypdf` in a Bot chat, or open **Plugins** in the sidebar,
+search for **EasyPDF** and choose **Add** *(once the marketplace listing is
+approved)*. The first time the Bot uses an EasyPDF tool, it shows a
+**Connect** card: choose **Authenticate** and sign in with Google in your
+browser. There is no API key to copy and nothing to store as a secret; the
+OAuth token stays on the host's connector backend and the Bot never sees it.
+
+Files attached in the chat are saved on the Bot's computer: the `easypdf`
+skill uploads them with `curl`, runs the tool, then attaches the result to
+the reply.
+
+### Cursor
+
+Type `/add-plugin easypdf` in the Agent chat *(once the marketplace listing is
+approved)*. Until then, install it from this repository: **Settings >
+Plugins**, paste `https://github.com/Lorenzino69/easypdf-claude-plugin`, then
+**Add**. Sign in with Google when Cursor asks to authenticate the `easypdf`
+MCP server.
+
 ### Only want the tools?
 
 The connector alone works in claude.ai, the desktop and mobile apps:
@@ -117,12 +138,26 @@ addresses, all operated by EasyPDF over HTTPS:
 
 | Address | What is sent or fetched | When |
 | --- | --- | --- |
-| `https://www.easypdf.fr/mcp` | Tool calls: file links and operation parameters | Every operation (the connector declared in `.mcp.json`) |
+| `https://www.easypdf.fr/mcp` | Tool calls: file links and operation parameters | Every operation (the server declared in the MCP files listed below) |
 | `https://www.easypdf.fr/api/ai-uploads/<token>` | The local PDF you asked Claude to process | Only when Claude can run commands and the file is on your disk |
 | `https://easy-pdf-backend.up.railway.app/api/chatgpt/download/...` | The result file, downloaded with `curl` | After each operation, to save the result next to the original |
 
 The upload link is signed, holds one file and expires after one hour, like
 the result links. No other service is contacted by the plugin.
+
+## Plugin layout
+
+| File | Read by |
+| --- | --- |
+| `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `.mcp.json` | Claude Code and Cowork |
+| `.cursor-plugin/plugin.json`, `.cursor-plugin/mcp.json`, `.cursor-plugin/marketplace.json` | Cursor and Grok Bot |
+| `.grok-plugin/plugin.json` (with `.mcp.json`) | Grok Build |
+| `plugin.json`, `mcp.json` | Other clients that read the Agent Plugins format |
+| `skills/` | Every host |
+| `assets/logo-plate.png` | Marketplace logo, 512×512, white background |
+
+Every MCP file points to the same server, `https://www.easypdf.fr/mcp/`, with
+OAuth sign-in and no headers or secrets.
 
 ## Privacy and data
 

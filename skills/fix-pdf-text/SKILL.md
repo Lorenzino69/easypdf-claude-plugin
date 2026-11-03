@@ -11,10 +11,11 @@ applies them. Use the `easypdf` skill for getting the file in and out.
 
 ## 1. Read the PDF before editing
 
-If you can read the file (local file in Claude Code or Cowork), read it and
-find the exact strings as printed. The `find` value must match the document:
-same spelling, accents, punctuation and spacing. If you cannot read it, ask
-the user to paste the exact text, or use `chat_with_pdf` to quote it.
+If you can read the file (a local file in Claude Code, Cowork or Cursor, a file
+on a Grok Bot computer), read it and find the exact strings as printed. The
+`find` value must match the document: same spelling, accents, punctuation and
+spacing. If you cannot read it, ask the user to paste the exact text, or use
+`chat_with_pdf` to quote it.
 
 ## 2. Plan the edits
 
