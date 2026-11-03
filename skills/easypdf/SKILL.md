@@ -20,10 +20,12 @@ PowerPoint conversions.
 In Claude Code and Cowork, EasyPDF works without an account for a few files
 a day (compress, merge, split, pages, protect, watermark, numbers, text
 edits). Translation, chat and Office conversions, and anything past the daily
-trial, need a free EasyPDF account. On Claude.ai the account is always needed.
+trial, need a free EasyPDF account. On Claude.ai, Grok Bot and Cursor the
+account is always needed: the host signs the user in with Google through
+OAuth, there is no API key to paste and you never see a token.
 
-In Claude Code and Cowork, try the tool first: do not ask the user to connect
-before a tool has actually asked for it.
+In Claude Code, Cowork, Grok Bot and Cursor, try the tool first: do not ask the
+user to connect before a tool has actually asked for it.
 
 If no EasyPDF tool (`compress_pdf`, `get_upload_link`...) is available to you,
 or a tool answers that it needs an account, or a call fails with an
@@ -37,6 +39,11 @@ language, then stop and wait:
      https://claude.ai/customize/plugins/id/8c9a384a-9a5d-4f58-b341-aa1c7d74638b%40anthropic-plugin-directory/connectors
    - **Claude Code** (terminal, desktop app, IDE): run `/mcp`, select
      `plugin:easypdf:easypdf`, choose **Authenticate**.
+   - **Grok Bot**: use the **Connect** card shown in the chat, or open
+     **Plugins** in the sidebar, select **EasyPDF** and choose
+     **Authenticate**. Sign-in finishes in the browser.
+   - **Cursor**: open Cursor Settings, find `easypdf` in the MCP section and
+     sign in from there.
 2. **Or do it right now in the browser, nothing to connect**: give the
    matching EasyPDF page from the table below as a clickable link.
 
@@ -68,8 +75,9 @@ Pick the first case that applies.
 
 **The user gave an `https://` link to the PDF.** Pass it as `file_url` as is.
 
-**The PDF is a local file and you can run shell commands** (Claude Code, Cowork):
-upload it yourself, the user has nothing to do.
+**The PDF is a file you can reach from a shell** (a local file in Claude Code,
+Cowork or Cursor, a file attached in a Grok Bot chat and saved on the Bot's
+computer): upload it yourself, the user has nothing to do.
 
 1. Call `get_upload_link` with `file_name` set to the file's name. It returns an
    `upload_url` such as `https://www.easypdf.fr/ai-upload/<token>`.
@@ -96,7 +104,7 @@ the link.
 the user to drop the PDF in it. The box tells you when the file is uploaded,
 then pass the `upload_url` as `file_url`. Where no box appears, show the link,
 ask the user to open it and drop the PDF, and wait until they confirm. Files
-attached to the chat are not reachable by EasyPDF.
+attached to a claude.ai chat are not reachable by EasyPDF.
 
 Limits: 50 MB per file, 20 uploads per minute.
 
@@ -126,6 +134,9 @@ free plan the daily allowance is small, so do not run speculative or
 duplicate calls, and prefer one well-planned chain. Paid plans are unlimited.
 `get_upload_link` is free.
 
+**Routines.** In a scheduled Grok Bot routine, process only the files the
+routine was set up for, and stop on a quota message instead of retrying.
+
 ## 3. Get the result out
 
 **If you can run commands, save the result next to the original** without
@@ -140,6 +151,9 @@ Suffixes: `-compressed`, `-edited`, `-merged`, `-translated-<lang>`,
 `-numbered`, `-protected`, `-unlocked`, `-watermarked`, `-pages-<range>`,
 `-rotated`; `.docx`, `.xlsx`, `.pptx` for conversions. For `split_pdf`, which
 returns a JSON array of links, save `<name>-part-1.pdf`, `<name>-part-2.pdf`...
+
+In Grok Bot, attach the saved file to your reply so the user gets it as a file
+card, and also give the download link.
 
 Then report what changed in one or two lines, with numbers when there are
 some: `report.pdf: 8.4 MB -> 1.9 MB (-77 %), saved as report-compressed.pdf`.

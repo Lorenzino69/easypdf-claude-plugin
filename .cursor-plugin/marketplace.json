@@ -1,0 +1,17 @@
+{
+  "name": "easypdf",
+  "owner": {
+    "name": "LORENET SYSTEMS",
+    "email": "hello@easypdf.fr"
+  },
+  "metadata": {
+    "description": "The EasyPDF plugin for Grok Bot and Cursor."
+  },
+  "plugins": [
+    {
+      "name": "easypdf",
+      "source": "./",
+      "description": "Edit, compress, merge, translate and convert real PDF files from your Bot, with the original layout kept."
+    }
+  ]
+}
